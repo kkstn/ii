@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Vending Machine</title>
+<script language="JavaScript">
+let textmoney=0;
+let change=0;
+let StockofJuice=100;
+let StockofTea=100;
+let Sales=0;
+let flag16=1;
+let flagayataka=1;
+let flagnama=1;
+let flagsoken=1;
+let flagmugi=1;
+let flaghato=1;
+function charge100(){
+ textmoney+=100;
+ document.getElementById('textmoney').textContent = textmoney;
+}
+
+function charge10(){
+
+ textmoney+=10;
+ document.getElementById('textmoney').textContent = textmoney;
+}
+function charge1000(){
+ textmoney+=1000;
+ document.getElementById('textmoney').textContent = textmoney;
+}
+
+function buyJuice(){
+    if(StockofJuice==0){
+        alert("Sold Out");
+    }
+    else{
+        if(textmoney>=150){
+            textmoney-=150;
+            Sales+=150
+            StockofJuice-=1
+            document.getElementById('textmoney').textContent = textmoney;
+            document.getElementById('StockofJuice').textContent = StockofJuice;
+            document.getElementById('Sales').textContent = Sales;
+        }
+        else{
+            alert("You do not have enough money");
+        }
+    }
+}
+
+function buyTea(){
+    if(StockofTea==0){
+        alert("Sold Out");
+    }
+    else{
+        if(textmoney>=120){
+            textmoney-=120;
+            Sales+=120
+            StockofTea-=1
+            document.getElementById('textmoney').textContent = textmoney;
+            document.getElementById('StockofTea').textContent = StockofTea;
+            document.getElementById('Sales').textContent = Sales;
+            let flagtya=Math.random();
+
+            if (flagtya<=0.2){
+                document.getElementById("Ayataka").src = "綾鷹.jpg";
+                document.getElementById("Ayataka?").src = "";
+                if (flagayataka==1){
+                document.getElementById("dia").textContent="綾鷹です。";
+                document.getElementById('dg1').showModal();
+                flagayataka=0
+                };
+            }
+
+            if(0.2<flagtya && flagtya<=0.5){
+                document.getElementById("juroku").src = "16茶.jpg";
+                document.getElementById("juroku?").src = "";
+                if (flag16==1){
+                document.getElementById("dia").textContent="16茶です。";
+                document.getElementById('dg1').showModal();
+                flag16=0
+                };
+
+            }
+            if(0.5<flagtya && flagtya<=0.7){
+                document.getElementById("nama").src = "生茶.png";
+                document.getElementById("nama?").src = "";
+                if (flagayataka==1){
+                document.getElementById("dia").textContent="綾鷹です。";
+                document.getElementById('dg1').showModal();
+                flagayataka=0
+                };
+            }
+            if(0.7<flagtya && flagtya<=0.8){
+                document.getElementById("mugi").src = "麦茶.jpg";
+                document.getElementById("mugi?").src = "";
+                if (flagmugi==1){
+                document.getElementById("dia").textContent="麦茶です。";
+                document.getElementById('dg1').showModal();
+                flagmugi=0
+                };
+            }
+            if(0.8<flagtya && flagtya<=0.9){
+                document.getElementById("soken").src = "爽健美茶.jpg";
+                document.getElementById("soken?").src = "";
+                if (flagsoken==1){
+                document.getElementById("dia").textContent="爽健美茶です。";
+                document.getElementById('dg1').showModal();
+                flagsoken=0
+                };
+            }
+            if(0.9<flagtya && flagtya<=1){
+                document.getElementById("hato").src = "鳩麦茶.jpg";
+                document.getElementById("hato?").src = "";
+                if (flaghato){
+                document.getElementById("dia").textContent="鳩麦茶です。"
+                document.getElementById('dg1').showModal();
+                flaghato=0
+                };
+            }
+
+          
+        }
+        else{
+            alert("You do not have enough money");
+        }
+    }
+}
+
+function Returnchange(){
+    change+=textmoney;
+    textmoney=0;
+    document.getElementById('change').textContent = change;
+    document.getElementById('textmoney').textContent = textmoney;
+}
+
+function ReplenishmentTea(){
+    StockofTea=100
+    StockofJuice=100
+    document.getElementById('StockofTea').textContent = StockofTea;
+    document.getElementById('StockofJuice').textContent = StockofJuice;
+
+}
+
+function Asari(){
+    let flag=(Math.random());
+    if (flag<=0.5){
+        alert("There were NOTHING...");
+    }
+    if (0.5<=flag<0.65){
+        alert("Got 1 Yen Coin!");
+        textmoney+=10;
+        document.getElementById('textmoney').textContent = textmoney;
+    }
+    if (0.65<=flag<0.8){
+        alert("Got 10 Yen Coin!");
+        textmoney+=100;
+        document.getElementById('textmoney').textContent = textmoney;
+    }
+    if (0.8<=flag<0.9){
+        alert("Got 100 Yen Coin!");
+        textmoney+=100;
+        document.getElementById('textmoney').textContent = textmoney;
+    }
+    if (0.9<=flag<0.95){
+        alert("Got 1000 Yen Bill!");
+        textmoney+=1000;
+        document.getElementById('textmoney').textContent = textmoney;
+    }    
+    if (0.95<=flag){
+        alert("You were pulled under the vending machine by a hand stained with blood.");
+        img = document.getElementById("image_file");
+        img.src = "https://1.bp.blogspot.com/-cEIMjxse5pY/X1CK8JwKISI/AAAAAAABaxA/RW5CaTIzzEk1ancm7Zwd1qG5Nd2x34tOwCNcBGAsYHQ/s1600/hand_tegata.png";
+    }  
+
+}   
+
+
+</script>
+</head>
+
+
+<body>
+<div class="wrapper">
+<img class='vending' src="https://3.bp.blogspot.com/-CGjU9gYp1LY/V3o2fXLCuzI/AAAAAAAA8HE/SovGs2dke-EWICh2sX--HlBRkyMbhryAACLcB/s800/machine_jidouhanbaiki.png">
+<img  id="image_file" src=""/>
+<div class='coin'>
+    <form name="form1" action="javascript:charge100()">
+        <input type="submit" value="100円投入"><br>
+    </form>
+
+    <form name="form2" action="javascript:charge10()">
+        <input type="submit" value="10円投入"><br>
+    </form>
+</div>
+
+<form class='bill' name="form1" action="javascript:charge1000()">
+    <input type="submit" value="1000円投入"><br>
+</form>
+<div class=money>
+投入額 <span  id="textmoney">0</span>
+</div>
+
+<div class='juices products'>
+    <div class='Juice'>
+        150円
+        <form name="form5" action="javascript:buyJuice()">
+            <input type="submit" value="ジュース購入"> <br>
+        </form>
+    </div>
+    <div class='Juice'>
+        150円
+        <form name="form5" action="javascript:buyJuice()">
+            <input type="submit" value="ジュース購入"> <br>
+        </form>
+    </div>
+    <div class='Juice'>
+        150円
+        <form name="form5" action="javascript:buyJuice()">
+            <input type="submit" value="ジュース購入"> <br>
+        </form>
+    </div>
+    <div class='Juice'>
+        150円
+        <form name="form5" action="javascript:buyJuice()">
+            <input type="submit" value="ジュース購入"> <br>
+        </form>
+    </div>
+    <div class='Juice'>
+        150円
+        <form name="form5" action="javascript:buyJuice()">
+            <input type="submit" value="ジュース購入"> <br>
+        </form>
+    </div>
+    <div class='Juice'>
+        150円
+        <form name="form5" action="javascript:buyJuice()">
+            <input type="submit" value="ジュース購入"> <br>
+        </form>
+    </div>
+</div>
+
+
+<div class="products teas">
+    <div class='Tea'>
+        120円 
+        <form name="form6" action="javascript:buyTea()">
+            <input type="submit" value="お茶購入"> <br>
+        </form>
+    </div>
+    <div class='Tea'>
+        120円 
+        <form name="form6" action="javascript:buyTea()">
+            <input type="submit" value="お茶購入"> <br>
+        </form>
+    </div>
+    <div class='Tea'>
+        120円 
+        <form name="form6" action="javascript:buyTea()">
+            <input type="submit" value="お茶購入"> <br>
+        </form>
+    </div>
+    <div class='Tea'>
+        120円 
+        <form name="form6" action="javascript:buyTea()">
+            <input type="submit" value="お茶購入"> <br>
+        </form>
+    </div>
+    <div class='Tea'>
+        120円 
+        <form name="form6" action="javascript:buyTea()">
+            <input type="submit" value="お茶購入"> <br>
+        </form>
+    </div>
+    <div class='Tea'>
+        120円 
+        <form name="form6" action="javascript:buyTea()">
+            <input type="submit" value="お茶購入"> <br>
+        </form>
+    </div>
+</div>
+
+<form name="form4" action="javascript:Returnchange()">
+    <input class='backbuttom' type="submit" value="おつり払い出し"> <span class='back' id="change">0</span><br>
+</form>
+
+<div class='restocker'>
+ジュースの在庫 <span id="StockofJuice">100</span>
+<br>
+お茶の在庫 <span id="StockofTea">100</span><br>
+<form action="javascript:ReplenishmentTea()">
+<input type="submit" value="全てを補充"> 
+</form>
+売上金 <span id="Sales">0</span><br>
+</div>
+
+<form class='Asari' name="form6" action="javascript:Asari()">
+    <input  type="submit" value="自販機の下を漁る" >5パターンのイベントが起きます。<br>
+</form>
+</div> 
+<div class=list>
+    <p>お茶</p>
+    <div class='tyako'>
+        <img class='tya' id="Ayataka"src="空.png">
+        <img class='tyaq' id="Ayataka?"src="はてな.png">
+    </div>
+    <div class='tyako'>
+        <img class='tya' id="juroku"src="空.png">
+        <img class='tyaq' id="juroku?"src="はてな.png">
+    </div>
+    <div class='tyako'>
+        <img class='tya' id="nama"src="空.png">
+        <img class='tyaq' id="nama?"src="はてな.png">
+    </div>
+    <div class='tyako'>
+        <img class='tya' id="soken"src="空.png">
+        <img class='tyaq' id="soken?"src="はてな.png">
+    </div>
+    <div class='tyako'>
+        <img class='tya' id="mugi"src="空.png">
+        <img class='tyaq' id="mugi?"src="はてな.png">
+    </div>
+    <div class='tyako'>
+        <img class='tya' id="hato"src="空.png">
+        <img class='tyaq' id="hato?"src="はてな.png">
+    </div>
+</div>
+
+<dialog id="dg1">
+  <p id="dia">a</p>
+  <input type="button" value="Close" onclick="document.getElementById('dg1').close()">
+</dialog>
+</body>
+
+<style>
+.wrapper{
+    position: relative;
+} 
+.Asari{
+    position:absolute;
+	top: 560px;
+	left:40px;
+}
+.Asari input{
+   font-size:12px
+}
+.coin{
+    position:absolute;
+	top:300px;
+	left:380px;
+}
+.bill{
+    position:absolute;
+	top:370px;
+	left:175px;
+}
+.money{
+    position:absolute;
+	top: 333px;
+	left:220px;
+    color:white;
+    font-size:14px;
+}
+.restocker{
+    position:absolute;
+	top: 40px;
+	left:420px;
+    background-color:grey;
+}
+.vending{
+    height:580px;
+}
+.hand{
+    position:absolute;
+	top: 40px;
+	left:420px;
+    height:180px;
+}
+.back{
+    position:absolute;
+	top: 490px;
+	left:325px;
+}
+.backbuttom{
+    position:absolute;
+	top: 298px;
+	left:250px;
+}
+.products { 
+    display: flex; 
+    position:absolute;
+    left: 47px;
+    text-align:center;
+} 
+.teas{
+    top:221px;
+}
+.juices{
+    top:106px;
+}
+.juices input{
+    font-size:6.3px;
+    padding-top:3px;
+    padding-bottom:3px;
+}
+.teas input{
+    font-size:9.5px;
+}
+.list{
+    position:absolute;
+	top: 180px;
+	left:500px;
+    display: flex; 
+    text-align:center;
+}
+.tya{
+    position:relative;
+    height:150px;
+    
+}
+.tyaq{
+    position:relative;
+    height:50px;
+    top:-80px;
+    left:5px;
+}
+.tyako{
+    width:100px;
+}
+
+</style>
+</html>
